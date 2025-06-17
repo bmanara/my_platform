@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="obstacles_world">
+    <!-- A global light source -->
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Ground Plane</uri>
+    </include>
+
+    <!-- Obstacles -->
+    <include>
+        <uri>
+            <pose>0 0 2 0 0 0</pose>
+            https://fuel.gazebosim.org/1.0/OpenRobotics/models/Construction Cone
+        </uri>
+    </include>
+
+    <include>
+        <pose>2 0 0 0 0 0</pose>
+        <uri>
+            https://fuel.gazebosim.org/1.0/german/models/Cardboard Box
+        </uri>
+    </include>
+  </world>

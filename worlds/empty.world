@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="empty_world">
+    <!-- A global light source -->
+    <include>
+      <uri>
+        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun
+      </uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>
+        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Ground Plane
+      </uri>
+    </include>
+
+    <!-- Boxes -->
+    <include>
+      <name>box1</name>
+      <pose>1 0 1 0 0 0</pose>
+      <uri>
+        https://fuel.gazebosim.org/1.0/german/models/Cardboard Box
+      </uri>
+    </include>
+
+    <include>
+      <name>box2</name>
+      <pose>0 2 1 0 0 0</pose>
+      <uri>
+        https://fuel.gazebosim.org/1.0/german/models/Cardboard Box
+      </uri>
+    </include>
+    <include>
+      <name>box3</name>
+      <pose>1 1 1 0 0 0</pose>
+      <uri>
+        https://fuel.gazebosim.org/1.0/german/models/Cardboard Box
+      </uri>
+    </include>
+
+  </world>
+</sdf>
