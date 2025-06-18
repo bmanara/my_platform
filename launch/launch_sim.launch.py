@@ -102,6 +102,28 @@ def generate_launch_description():
         ]
     )
 
+    joint_traj_spawner = TimerAction(
+        period=2.0,
+        actions=[
+            Node(
+                package="controller_manager",
+                executable="spawner",
+                arguments=["joint_trajectory_controller"]
+            )
+        ]
+    )
+
+    gripper_cont_spawner = TimerAction(
+        period=2.0,
+        actions=[
+            Node(
+                package="controller_manager",
+                executable="spawner",
+                arguments=["gripper_controller"]
+            )
+        ]
+    )
+
     slam_launch = TimerAction(
         period=6.0,  # Wait for 3 seconds before starting SLAM
         actions=[
@@ -156,7 +178,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        rsp,
+        rsp, # nodes
         world_arg,
         gazebo,
         spawn_entity,
@@ -164,6 +186,8 @@ def generate_launch_description():
         rviz,
         diff_drive_spawner,
         joint_broad_spawner,
+        joint_traj_spawner,
+        gripper_cont_spawner,
         slam_launch,
         nav2_launch,
         twist_mux

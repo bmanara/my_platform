@@ -189,4 +189,7 @@
         <mu1 value="0.001" />
         <mu2 value="0.001" />
     </gazebo>
+
+    <!-- Include Arm URDF -->
+    <xacro:include filename="$(find my_ur)/urdf/ur.urdf.xacro" />
 </robot>
