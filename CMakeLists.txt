@@ -33,7 +33,7 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config launch urdf worlds
+  DIRECTORY config launch rviz urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

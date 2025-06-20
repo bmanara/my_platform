@@ -20,7 +20,7 @@ slam_toolbox:
     # if you'd like to immediately start continuing a map at a given pose
     # or at the dock, but they are mutually exclusive, if pose is given
     # will use pose
-    map_file_name: /home/brian_2025/Github/dev_ws/my_map_serial # will need to change to your path
+    map_file_name: /home/brian_2025/Github/moveit_ws/my_map_serial # will need to change to your path
     # map_start_pose: [0.0, 0.0, 0.0]
     map_start_at_dock: true # start at the dock, if false will start at the origin
 

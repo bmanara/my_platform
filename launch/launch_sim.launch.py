@@ -73,11 +73,17 @@ def generate_launch_description():
         arguments=['--ros-args', '-p', f'config_file:={bridge_params}']
     )
 
+    rviz_config_file = PathJoinSubstitution([
+        FindPackageShare(package_name),
+        'rviz',
+        'my_platform.rviz'
+    ])
     rviz = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
-        output='screen'
+        output='log',
+        arguments=["-d", rviz_config_file]
     )
 
     diff_drive_spawner = TimerAction(
