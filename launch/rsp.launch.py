@@ -87,6 +87,7 @@ def generate_launch_description():
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('my_platform'))
     xacro_file = os.path.join(pkg_path, 'urdf','robot.urdf.xacro') # for original robot
+    macro_file_path = os.path.join(pkg_path, 'urdf', 'my_platform.urdf')
     # robot_description_config = xacro.process_file(xacro_file)
     robot_description_content = Command(
         [
@@ -112,7 +113,34 @@ def generate_launch_description():
         ]
     )
 
-    
+    # Generate the robot description content into a single URDF file for stability checker
+    # Command() calls itself, so we can use it to generate the URDF file
+    # Note, there might be a race condition here... 
+    generate_robot_description_content = Command(
+        [
+            PathJoinSubstitution([FindExecutable(name="xacro")]),
+            " ",
+            xacro_file,
+            " ",
+            "safety_limits:=", safety_limits,
+            " ",
+            "safety_pos_limits:=", safety_pos_limits,
+            " ",
+            "safety_k_position:=", safety_k_position,
+            " ",
+            "name:=ur",
+            " ",
+            "ur_type:=", ur_type,
+            " ",
+            "prefix:=", prefix,
+            " ",
+            "sim_ignition:=true",
+            " ",
+            "simulation_controllers:=", initial_joint_controller,
+            " ",
+            "-o ", macro_file_path
+        ]
+    )
 
     
     # Create a robot_state_publisher node
@@ -140,5 +168,5 @@ def generate_launch_description():
         prefix_arg,
         start_joint_controller_arg,
         initial_joint_controller_arg,
-        node_robot_state_publisher
+        node_robot_state_publisher,
     ])

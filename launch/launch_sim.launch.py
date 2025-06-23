@@ -183,6 +183,23 @@ def generate_launch_description():
         remappings=[('/cmd_vel_out', '/diff_cont/cmd_vel_unstamped')]
     )
 
+    # File path should lead to complete URDF file, NOT the xacro file
+    # Produced in rsp.launch.py, inside package 'my_platform'
+    macro_urdf_file_path = PathJoinSubstitution([
+        FindPackageShare(package_name),
+        'urdf',
+        'my_platform.urdf'
+    ])
+    stability_checker = Node(
+        package='stability_checker',
+        executable='stability_checker',
+        name='stability_checker',
+        output='screen',
+        parameters=[{
+            "urdf_file_path": macro_urdf_file_path
+        }],
+    )
+
     return LaunchDescription([
         rsp, # nodes
         world_arg,
@@ -196,5 +213,6 @@ def generate_launch_description():
         gripper_cont_spawner,
         slam_launch,
         nav2_launch,
-        twist_mux
+        twist_mux,
+        stability_checker
     ])
