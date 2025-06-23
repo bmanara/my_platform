@@ -5,6 +5,7 @@ Required Packages for this to work:
 - `my_ur` (package in my Github repos, mobile_manipulator branch)
 - `moveit2` 
 - `gz_ros2_control` (changes made, look at `my_ur` README for more info)
+- `stability_checker` (package in my Github repos)
 
 ### On main branch
 With the new launch file, just run:
