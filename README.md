@@ -31,3 +31,8 @@ To launch together with MoveIt (to control the UR10 arm), run:
 ```
 ros2 launch my_platform launch_sim_mnoveit.launch.py
 ```
+
+If `my_mtc` package is installed with `platform` branch, run the following alongside launch with Moveit,
+```
+ros2 launch my_mtc pick_place_demo.launch.py
+```
